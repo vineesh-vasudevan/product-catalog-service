@@ -16,6 +16,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
             var existingProduct = new Product
             {
                 Id = productId,
+                Code = "Code",
                 Name = "Old Name",
                 Category = ["Old Category"],
                 Description = "Old Description",
@@ -26,7 +27,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
             repository.GetById(productId, Arg.Any<CancellationToken>())
                        .Returns(existingProduct);
 
-            var command = new UpdateProductCommand(productId, "New Name", ["New Category"], "New Description", "new.png", 20.5M);
+            var command = new UpdateProductCommand(productId, "Code", "New Name", ["New Category"], "New Description", "new.png", 20.5M);
 
             // Act
             var result = await handler.Handle(command, CancellationToken.None);
@@ -36,6 +37,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
             result.Value.Should().BeOfType<UpdateProductResponse>();
 
             var updated = result.Value.Product;
+            updated.Code.Should().Be("Code");
             updated.Name.Should().Be("New Name");
             updated.Category[0].Should().Be("New Category");
             updated.Description.Should().Be("New Description");
@@ -55,7 +57,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
             repository.GetById(productId, Arg.Any<CancellationToken>())
                        .Returns((Product)null!);
 
-            var command = new UpdateProductCommand(productId, "New Name", ["New Category"], "New Description", "new.png", 20.5M);
+            var command = new UpdateProductCommand(productId, "Code", "New Name", ["New Category"], "New Description", "new.png", 20.5M);
 
             // Act
             var result = await handler.Handle(command, CancellationToken.None);

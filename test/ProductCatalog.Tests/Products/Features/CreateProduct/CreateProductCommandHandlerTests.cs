@@ -16,10 +16,11 @@ namespace ProductCatalog.Tests.Products.Features.CreateProduct
             var cancellationToken = CancellationToken.None;
             var productId = Guid.NewGuid();
 
-            var command = new CreateProductCommand("Test Product", ["Electronics"], "Computer", "computer.jpg", 50);
+            var command = new CreateProductCommand("Test Code", "Test Product", ["Electronics"], "Computer", "computer.jpg", 50);
 
             var product = new Product
             {
+                Code = command.Code,
                 Name = command.Name,
                 Category = command.Category,
                 Description = command.Description,

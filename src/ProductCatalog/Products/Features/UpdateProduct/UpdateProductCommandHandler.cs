@@ -15,6 +15,7 @@ namespace ProductCatalog.Products.Features.UpdateProduct
             }
 
             product.Name = command.Name;
+            product.Code = command.Code;
             product.Category = command.Category;
             product.Description = command.Description;
             product.ImageFile = command.ImageFile;

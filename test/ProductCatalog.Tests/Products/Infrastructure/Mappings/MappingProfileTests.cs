@@ -39,6 +39,7 @@ namespace ProductCatalog.Tests.Products.Infrastructure.Mappings
         {
             // Arrange
             var request = new CreateProductRequest(
+                "Code",
                 "Test Product",
                 new List<string> { "Electronics" },
                 "Computer",
@@ -51,6 +52,7 @@ namespace ProductCatalog.Tests.Products.Infrastructure.Mappings
 
             // Assert
             command.Name.Should().Be(request.Name);
+            command.Code.Should().Be(request.Code);
             command.Category.Should().BeEquivalentTo(request.Category);
             command.Description.Should().Be(request.Description);
             command.ImageFile.Should().Be(request.ImageFile);
@@ -62,6 +64,7 @@ namespace ProductCatalog.Tests.Products.Infrastructure.Mappings
         {
             // Arrange
             var command = new CreateProductCommand(
+                "Code",
                 "Test Product",
                 new List<string> { "Electronics" },
                 "Computer",
@@ -74,6 +77,7 @@ namespace ProductCatalog.Tests.Products.Infrastructure.Mappings
 
             // Assert
             product.Name.Should().Be(command.Name);
+            product.Code.Should().Be(command.Code);
             product.Category.Should().BeEquivalentTo(command.Category);
             product.Description.Should().Be(command.Description);
             product.ImageFile.Should().Be(command.ImageFile);

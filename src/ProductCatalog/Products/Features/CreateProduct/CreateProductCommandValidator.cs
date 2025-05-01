@@ -4,6 +4,7 @@
     {
         public CreateProductCommandValidator()
         {
+            RuleFor(x => x.Code).NotEmpty().WithMessage("Code should not be empty");
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name should not be empty");
             RuleFor(x => x.Category).NotEmpty().WithMessage("Category should not be empty");
             RuleFor(x => x.ImageFile).NotEmpty().WithMessage("ImageFile should not be empty");

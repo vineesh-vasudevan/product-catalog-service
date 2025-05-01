@@ -18,8 +18,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
         public void Should_Have_Error_When_Name_Is_Null()
         {
             //Arrange
-            var command = new UpdateProductCommand(
-                Guid.NewGuid(), null!, [], "Description", "img.jpg", 10);
+            var command = new UpdateProductCommand(Guid.NewGuid(), "Code", null!, [], "Description", "img.jpg", 10);
 
             //Act
             var result = _validator.TestValidate(command);
@@ -32,8 +31,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
         public void Should_Have_Error_When_Name_Is_Empty()
         {
             //Arrange
-            var command = new UpdateProductCommand(
-                Guid.NewGuid(), "", new List<string>(), "Description", "img.jpg", 10);
+            var command = new UpdateProductCommand(Guid.NewGuid(), "Code", "", new List<string>(), "Description", "img.jpg", 10);
 
             //Act
             var result = _validator.TestValidate(command);
@@ -46,8 +44,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
         public void Should_Have_Error_When_Name_Is_Too_Short()
         {
             //Arrange
-            var command = new UpdateProductCommand(
-                Guid.NewGuid(), "A", new List<string>(), "Description", "img.jpg", 10);
+            var command = new UpdateProductCommand(Guid.NewGuid(), "Code", "A", [], "Description", "img.jpg", 10);
 
             //Act
             var result = _validator.TestValidate(command);
@@ -61,8 +58,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
         {
             //Arrange
             var longName = new string('A', 151);
-            var command = new UpdateProductCommand(
-                Guid.NewGuid(), longName, new List<string>(), "Description", "img.jpg", 10);
+            var command = new UpdateProductCommand(Guid.NewGuid(), "Code", longName, new List<string>(), "Description", "img.jpg", 10);
 
             //Act
             var result = _validator.TestValidate(command);
@@ -75,8 +71,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
         public void Should_Have_Error_When_Price_Is_Zero()
         {
             //Arrange
-            var command = new UpdateProductCommand(
-                Guid.NewGuid(), "Valid Name", new List<string>(), "Description", "img.jpg", 0);
+            var command = new UpdateProductCommand(Guid.NewGuid(), "Code", "Valid Name", new List<string>(), "Description", "img.jpg", 0);
 
             //Act
             var result = _validator.TestValidate(command);
@@ -91,6 +86,7 @@ namespace ProductCatalog.Tests.Products.Features.UpdateProduct
             //Arrange
             var command = new UpdateProductCommand(
                 Guid.NewGuid(),
+                "Code",
                 "Valid Product Name",
                 new List<string> { "Category1", "Category2" },
                 "A nice product description",

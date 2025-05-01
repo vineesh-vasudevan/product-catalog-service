@@ -3,6 +3,7 @@
     public class Product
     {
         public Guid Id { get; set; }
+        public string Code { get; set; } = default!;
         public string Name { get; set; } = default!;
         public List<string> Category { get; set; } = new();
         public string Description { get; set; } = default!;
