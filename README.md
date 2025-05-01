@@ -85,3 +85,5 @@ Returns the health status of the service and its dependencies (e.g., PostgreSQL)
 - Implement Retry and Circuit Breaker policies with Polly
 
 - Increase Unit Testing Coverage
+  
+- Add missing integration Tests
