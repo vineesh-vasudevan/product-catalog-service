@@ -57,6 +57,34 @@ Built with **.NET 8**, **PostgreSQL**, and modern development practices, followi
 
 - PostgreSQL (Optional if running outside Docker)
 
+### 🚀 Start the service using Docker Compose
+
+```bash
+
+docker-compose up -d --build
+
+```
+
+This will:
+
+- Build the service
+
+- Start the Product Catalog API
+
+- Spin up a PostgreSQL container
+
+📝 The API will be available at: http://localhost:6000
+
+🧪 Health check: http://localhost:6000/health
+
+To stop and remove containers:
+
+```bash
+
+docker-compose down
+
+```
+
 ## 🔍 Health Checks
 
 #### Health Endpoint:
@@ -64,6 +92,7 @@ Built with **.NET 8**, **PostgreSQL**, and modern development practices, followi
 ```bash
 
 GET /health
+
 ```
 
 Returns the health status of the service and its dependencies (e.g., PostgreSQL).
@@ -85,5 +114,7 @@ Returns the health status of the service and its dependencies (e.g., PostgreSQL)
 - Implement Retry and Circuit Breaker policies with Polly
 
 - Increase Unit Testing Coverage
-  
+
 - Add missing integration Tests
+
+- Set up the Marten database schema & product catalog items automatically at startup
